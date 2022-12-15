@@ -11,6 +11,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Class used to create the User Intergace
+ *
+ * @author Michael Laing, Ngaio Hawkins
+ */
 public class CalcApp extends Application {
     private TextField display;
     private Engine engine;
@@ -63,6 +68,7 @@ public class CalcApp extends Application {
 
     }
 
+    //Method to quickly add buttons to the different columns.
     public void addButton(VBox vb, char c){
         Button b = new Button(""+c);
         vb.getChildren().add(b);

@@ -1,5 +1,10 @@
 package com.example.calculator;
 
+/**
+ * Class used to do behind the scenes work for the calculator
+ *
+ * @author Michael Laing
+ */
 public class Engine {
     private String equation;
     private EngineState engineState;
@@ -7,6 +12,7 @@ public class Engine {
     private int operandB;
     private char operator;
 
+    //Constructor
     public Engine(){
         this.equation="0";
         this.engineState=EngineState.INITIALIZED;
@@ -20,14 +26,14 @@ public class Engine {
      */
     public void input(char c){
         switch(this.engineState){
-            case INITIALIZED:
+            case INITIALIZED: //Processing characters in the initial state.
                 if(Character.isDigit(c)) {
                     this.equation = ""+c;
                     this.operandA = c-'0';
                     this.engineState=EngineState.READING_OPERAND_A;
                 }
                 break;
-            case READING_OPERAND_A:
+            case READING_OPERAND_A: //Processing first number
                 if(Character.isDigit(c)){
                     this.operandA=this.operandA*10+(c-'0');
                     this.equation=this.equation+c;
@@ -37,7 +43,7 @@ public class Engine {
                     this.equation=this.equation+c;
                 }
                 break;
-            case READING_OPERAND_B:
+            case READING_OPERAND_B: //Processing second number
                 if(Character.isDigit(c)){
                     this.operandB=this.operandB*10+(c-'0');
                     this.equation=this.equation+c;
@@ -71,7 +77,7 @@ public class Engine {
                     }
                 }
                 break;
-            case DISPLAYING_RESULT:
+            case DISPLAYING_RESULT: //Reset after receiving '=' input.
                 if(Character.isDigit(c)) {
                     this.equation = ""+c;
                     this.operandA = c-'0';
